@@ -1,0 +1,24 @@
+optionsFile: null
+printHelp: false
+classPath: []
+appClassPath:
+  - java-benchmarks/CB
+  - java-benchmarks/CB/commons-beanutils-1.8.3.jar
+  - java-benchmarks/CB/commons-collections-3.2.1.jar
+mainClass: CB
+inputClasses: []
+javaVersion: 8
+prependJVM: false
+allowPhantom: true
+worldBuilderClass: pascal.taie.frontend.soot.SootWorldBuilder
+outputDir: output
+preBuildIR: true
+worldCacheMode: false
+scope: ALL
+nativeModel: true
+planFile: null
+analyses:
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/CB/taint-config.yml; #dump-ci:true;
+onlyGenPlan: false
+keepResult:
+  - $KEEP-ALL

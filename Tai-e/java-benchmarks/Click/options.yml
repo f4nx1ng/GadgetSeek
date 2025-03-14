@@ -1,0 +1,24 @@
+optionsFile: null
+printHelp: false
+classPath: []
+appClassPath:
+  - java-benchmarks/Click
+  - java-benchmarks/Click/click-nodeps-2.3.0.jar
+mainClass: EntryTest
+inputClasses: []
+javaVersion: 8
+prependJVM: false
+allowPhantom: true
+worldBuilderClass: pascal.taie.frontend.soot.SootWorldBuilder
+outputDir: output
+preBuildIR: true
+worldCacheMode: false
+scope: ALL
+nativeModel: true
+planFile: null
+analyses:
+  #  ir-dumper: ;
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;merge-string-objects:false;merge-string-builders:false;merge-exception-objects:false;taint-config:java-benchmarks/Click/taint-config.yml;
+onlyGenPlan: false
+keepResult:
+  - $KEEP-ALL

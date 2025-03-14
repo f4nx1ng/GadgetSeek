@@ -1,0 +1,34 @@
+sources:
+  #  - { kind: call, method: "<URLDNS: byte[] getpayload()>", index: result }
+  - { kind: param, method: "<java.util.HashMap: void readObject(java.io.ObjectInputStream)>", index: 0 }
+#  - { kind: param, method: "<java.util.HashSet: void readObject(java.io.ObjectInputStream)>", index: 0}
+#  - { kind: param, method: "<javax.management.BadAttributeValueExpException: void readObject(java.io.ObjectInputStream)>", index: 0 }
+#  - { kind: field, field: "<java.util.PriorityQueue: java.util.Comparator comparator>"}
+#  - { kind: call, method: "<java.net.URLStreamHandler: int hashCode(java.net.URL)>", index: 0}
+sinks:
+#  - { method: "<java.net.InetAddress: java.net.InetAddress getByName(java.lang.String)>", index: 0 }
+#  - { method: "<org.apache.commons.collections4.comparators.TransformingComparator int compare(java.lang.Object,java.lang.Object)>", index: base}
+#  - { method: "<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>", index: 1}
+#  - { method: "<java.util.PriorityQueue: void siftDownUsingComparator(int,java.lang.Object)>", index: base}
+#  - { method: "<org.apache.commons.collections4.Transformer: java.lang.Object transform(java.lang.Object)>", index: base}
+#  - { method: "<org.apache.commons.collections4.functors.ChainedTransformer: java.lang.Object transform(java.lang.Object)>", index: base }
+  - { method: "<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>", index: 0 }
+#  - { method: "<com.sun.syndication.feed.impl.ToStringBean: java.lang.String toString(java.lang.String)>", index: base }
+#  - { method: "<org.apache.commons.collections.keyvalue.TiedMapEntry: java.lang.Object getValue()>", index: base}
+#  - { method: "<java.net.URL: int hashCode()>", index: base}
+#  - { method: "<java.net.URLStreamHandler: int hashCode(java.net.URL)>", index: 0}
+
+transfers:
+#  - { method: "<java.io.ByteArrayInputStream: void <init>(byte[])>", from: 0, to: base }
+#  - { method: "<java.io.ObjectInputStream: void <init>(java.io.InputStream)>", from: 0, to: base }
+#  - { method: "<java.io.ObjectInputStream: java.lang.Object readObject()>", from: base, to: result }
+  - { method: "<java.io.ObjectInputStream: java.lang.Object readObject()>", from: base, to: result }
+  - { method: "<java.lang.Object: java.lang.Class getClass()>", from: base, to: result }
+  - { method: "<java.lang.Class: java.lang.String getName()>", from: base, to: result }
+  - { method: "<java.lang.String: java.lang.String substring(int)>", from: base, to: result }
+  - { method: "<com.sun.syndication.feed.impl.BeanIntrospector: java.beans.PropertyDescriptor[] getPropertyDescriptors(java.lang.Class)>", from: 0, to: result }
+#  - { method: "<org.apache.commons.collections.functors.ChainedTransformer: java.lang.Object transform(java.lang.Object)>", from: base, to: result}
+#  - { method: "<java.io.ObjectInputStream: java.lang.Object readObject()>", from: base, to: result, type: "java.net.URL" }
+#  - { method: "<java.util.Map: java.util.V get()>", from: base, to: result}
+#  - { method: "<java.net.URLStreamHandler: int hashCode(java.net.URL)>", from: 0, to: base}
+

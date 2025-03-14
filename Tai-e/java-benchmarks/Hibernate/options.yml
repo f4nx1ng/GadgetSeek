@@ -1,0 +1,29 @@
+optionsFile: null
+printHelp: false
+classPath: []
+appClassPath:
+  - java-benchmarks/Hibernate
+  - java-benchmarks/Hibernate/aopalliance-1.0.jar
+#  - java-benchmarks/Hibernate/dom4j-1.6.1.jar
+  - java-benchmarks/Hibernate/hibernate-core-4.3.11.Final.jar
+#  - java-benchmarks/Hibernate/jboss-logging-3.3.0.Final.jar
+  - java-benchmarks/Hibernate/jboss-transaction-api_1.2_spec-1.0.0.Final.jar
+#  - java-benchmarks/Hibernate/log4j-api-2.15.0.jar
+mainClass: EntryTest
+inputClasses: []
+javaVersion: 8
+prependJVM: false
+allowPhantom: true
+worldBuilderClass: pascal.taie.frontend.soot.SootWorldBuilder
+outputDir: output
+preBuildIR: true
+worldCacheMode: false
+scope: ALL
+nativeModel: true
+planFile: null
+analyses:
+  #  ir-dumper: ;
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;merge-string-objects:false;merge-string-builders:false;merge-exception-objects:false;taint-config:java-benchmarks/Hibernate/taint-config.yml;
+onlyGenPlan: false
+keepResult:
+  - $KEEP-ALL
