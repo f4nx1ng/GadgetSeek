@@ -52,7 +52,7 @@ def priorKnowledge(messages):
     return messages
 
 def chatAI(callchain, callerclass):
-    client = OpenAI(api_key="API-Key", base_url="https://api.deepseek.com/v1")
+    client = OpenAI(api_key="API-key", base_url="https://api.deepseek.com/v1")
     identify = {"role": "system", "content": "You are a Java security engineer specializing in researching Java deserialization vulnerabilities"}
     messages = []
 
@@ -118,9 +118,14 @@ def chatAI(callchain, callerclass):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # chatAI()
+    i = 0
     callchains = getAllCallChain("CC6Info/DealResult")
-    callerclass = callchains[1].split("->")[0].split("(")[0].split(".")[-2]
-    # print(callerclass)
-    chatAI(callchains[1], callerclass)
+
+    # callerclass = callchains[1].split("->")[0].split("(")[0].split(".")[-2]
+    # chatAI(callchains[1], callerclass)
+    while i < len(callchains):
+        callerclass = callchains[i].split("->")[0].split("(")[0].split(".")[-2]
+        chatAI(callchains[i], callerclass)
+        i += 1
 
 
