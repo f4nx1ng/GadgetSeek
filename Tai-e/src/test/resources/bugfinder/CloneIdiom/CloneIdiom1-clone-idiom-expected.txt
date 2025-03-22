@@ -1,3 +1,0 @@
--------------------- CloneIdiom1 (clone-idiom) --------------------
-Class: CloneIdiom1, Method: null, LineNumber: null, BugType: CN_IDIOM, Severity: MINOR
-

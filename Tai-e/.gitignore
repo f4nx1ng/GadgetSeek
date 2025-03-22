@@ -1,9 +1,0 @@
-# macOS hidden file
-.DS_Store
-.gradle/
-.idea/
-bin/
-build/
-cache/
-out/
-output/

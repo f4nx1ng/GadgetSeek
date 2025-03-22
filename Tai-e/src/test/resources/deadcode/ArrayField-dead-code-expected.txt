@@ -1,6 +1,0 @@
--------------------- <ArrayField: void <init>()> (dead-code) --------------------
-
--------------------- <ArrayField: int array()> (dead-code) --------------------
-
--------------------- <ArrayField: int field()> (dead-code) --------------------
-
