@@ -26,6 +26,7 @@ import java.util.*;
 
 import static pascal.taie.util.MyInferenceV2.*;
 import static pascal.taie.util.ObjectStructGeneration.*;
+import static pascal.taie.util.ObjectVisualizer.exportToDot;
 
 public class PathFindHandler implements Plugin{
     private static Solver solver;
@@ -345,8 +346,10 @@ public class PathFindHandler implements Plugin{
                 }
 
 //                SimpleGraph ObjectStruct = null;
+                String filename = "D:\\毕设研究\\Tai-e\\output\\object.dot";
 //
-//                ObjectStruct = getTheStructOfObjectTrulyV2(csrcMethods, containers);
+                SimpleGraph ObjectStruct = getTheStructOfObjectTrulyV2(csrcMethods, containers);
+                exportToDot(ObjectStruct, filename);
 
                 System.out.print("\n");
                 count++;

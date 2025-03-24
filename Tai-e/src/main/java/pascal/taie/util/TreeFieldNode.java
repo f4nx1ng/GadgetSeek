@@ -31,6 +31,11 @@ public class TreeFieldNode implements MyNode{
     }
 
     @Override
+    public String toString() {
+        return this.fieldname + "(" + this.id + ")";
+    }
+
+    @Override
     public int hashCode() {
         return Hashes.safeHash(this.fieldname, this.id);
     }

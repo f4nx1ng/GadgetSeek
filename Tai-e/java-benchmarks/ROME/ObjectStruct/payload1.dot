@@ -1,0 +1,8 @@
+digraph G {
+    "java.util.HashMap(0)" -> "com.sun.syndication.feed.impl.ObjectBean(0)";
+    "com.sun.syndication.feed.impl.EqualsBean(0)" -> "<com.sun.syndication.feed.impl.EqualsBean: java.lang.Object _obj>(0)";
+    "com.sun.syndication.feed.impl.ToStringBean(0)" -> "<com.sun.syndication.feed.impl.ToStringBean: java.lang.Object _obj>(0)";
+    "com.sun.syndication.feed.impl.ObjectBean(0)" -> "<com.sun.syndication.feed.impl.ObjectBean: com.sun.syndication.feed.impl.EqualsBean _equalsBean>(0)";
+    "<com.sun.syndication.feed.impl.ObjectBean: com.sun.syndication.feed.impl.EqualsBean _equalsBean>(0)" -> "com.sun.syndication.feed.impl.EqualsBean(0)";
+    "<com.sun.syndication.feed.impl.EqualsBean: java.lang.Object _obj>(0)" -> "com.sun.syndication.feed.impl.ToStringBean(0)";
+}

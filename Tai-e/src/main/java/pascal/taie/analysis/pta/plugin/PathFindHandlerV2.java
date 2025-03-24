@@ -18,14 +18,19 @@ import pascal.taie.language.classes.ClassHierarchy;
 import pascal.taie.language.classes.JClass;
 import pascal.taie.language.classes.JMethod;
 import pascal.taie.util.CSRCMethod;
+import pascal.taie.util.graph.SimpleGraph;
 
 import java.util.*;
 
 import static pascal.taie.util.MyInferenceV2.*;
+import static pascal.taie.util.ObjectStructGeneration.getTheStructOfObjectTrulyV2;
+import static pascal.taie.util.ObjectVisualizer.exportToDot;
 
 public class PathFindHandlerV2 implements Plugin{
     private static Solver solver;
     private TaintConfig config = TaintConfig.EMPTY;
+    private String objectStructDir = World.get().getOptions().getAppClassPath().get(0) + "/ObjectStruct/";
+
     private static CSManager csManager;
     private static String Empty = "empty";
     private static String NoAssociation = "No Association";
@@ -66,7 +71,6 @@ public class PathFindHandlerV2 implements Plugin{
     @Override
     public void onFinish() {
         config = TaintAnalysis.config;
-
 
         csManager = solver.getCSManager();
         List<JClass> jClassList = solver.getHierarchy().allClasses().toList();
@@ -343,6 +347,11 @@ public class PathFindHandlerV2 implements Plugin{
 //                SimpleGraph ObjectStruct = null;
 //
 //                ObjectStruct = getTheStructOfObjectTrulyV2(csrcMethods, containers);
+
+                String filename = objectStructDir + "payload" + count + ".dot";
+//
+                SimpleGraph ObjectStruct = getTheStructOfObjectTrulyV2(csrcMethods, containers);
+                exportToDot(ObjectStruct, filename);
 
                 System.out.print("\n");
                 count++;

@@ -34,6 +34,11 @@ public class TreeNode implements MyNode{
     }
 
     @Override
+    public String toString() {
+        return this.classname + "(" + this.id + ")";
+    }
+
+    @Override
     public int hashCode() {
         return Hashes.safeHash(this.classname, this.id);
     }

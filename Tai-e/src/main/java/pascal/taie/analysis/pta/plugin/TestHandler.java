@@ -7,6 +7,7 @@ import pascal.taie.analysis.pta.core.heap.Obj;
 import pascal.taie.analysis.pta.core.solver.Solver;
 import pascal.taie.analysis.pta.plugin.taint.*;
 import pascal.taie.analysis.pta.pts.PointsToSet;
+import pascal.taie.config.Options;
 import pascal.taie.ir.exp.*;
 import pascal.taie.ir.proginfo.FieldRef;
 import pascal.taie.ir.stmt.*;
@@ -18,6 +19,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 import pascal.taie.util.MyInference;
+import picocli.CommandLine;
 
 import static pascal.taie.util.MyInference.*;
 
@@ -375,50 +377,52 @@ public class TestHandler implements Plugin {
 
         TaintManager manager = new TaintManager(solver.getHeapModel());
         CSManager csManager = solver.getCSManager();
+        Options options = World.get().getOptions();
 
 
-        solver.getCallGraph().reachableMethods().forEach(csMethod -> {
-            if (csMethod.getMethod().getName().equals("toString") && csMethod.getMethod().getDeclaringClass().getName().equals("com.sun.syndication.feed.impl.ToStringBean") && csMethod.getMethod().getParamCount() == 1) {
-//                Var thisVar = csMethod.getMethod().getIR().getThis();
-//                System.out.println(csManager.getCSVar(csMethod.getContext(), thisVar).getPointsToSet());
-                csMethod.getMethod().getIR().getStmts().forEach(stmt -> {
-                    //testField(stmt, csManager, csMethod);
-                    System.out.println(stmt);
-//                    System.out.println(stmt.getClass());
-//                    if (stmt.getDef().get() instanceof Var var && var.getName().equals("$r4") ){
-//                        System.out.println(stmt);
-//                        System.out.println(stmt.getClass());
-//                    }
 
-
-//                    if (stmt instanceof Invoke invoke && invoke.getRValue() instanceof InvokeInstanceExp invokeInstanceExp) {
-//                        if(invokeInstanceExp.getBase().getName().equals("$r1")){
-////                            System.out.println(csManager.getCSVar(csMethod.getContext(), invoke.getRValue().getArg(0)).getPointsToSet());
-//                            if (csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getBase()).getPointsToSet() != null){
-////                                System.out.println(invokeInstanceExp.getArg(0));
-////                                System.out.println(csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getArg(0)).getPointsToSet());
-//                                System.out.println(invokeInstanceExp.getBase());
-//                                System.out.println(csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getBase()).getPointsToSet());
-//                                //System.out.println(invoke.getMethodRef().resolve());
-//                            }
+//        solver.getCallGraph().reachableMethods().forEach(csMethod -> {
+//            if (csMethod.getMethod().getName().equals("toString") && csMethod.getMethod().getDeclaringClass().getName().equals("com.sun.syndication.feed.impl.ToStringBean") && csMethod.getMethod().getParamCount() == 1) {
+////                Var thisVar = csMethod.getMethod().getIR().getThis();
+////                System.out.println(csManager.getCSVar(csMethod.getContext(), thisVar).getPointsToSet());
+//                csMethod.getMethod().getIR().getStmts().forEach(stmt -> {
+//                    //testField(stmt, csManager, csMethod);
+//                    System.out.println(stmt);
+////                    System.out.println(stmt.getClass());
+////                    if (stmt.getDef().get() instanceof Var var && var.getName().equals("$r4") ){
+////                        System.out.println(stmt);
+////                        System.out.println(stmt.getClass());
+////                    }
 //
-////                            CSCallSite csCallSite = csManager.getCSCallSite(csMethod.getContext(), invoke);
-////                            findFormalParameterAssociation(invokeInstanceExp.getBase(), csMethod.getMethod(), csMethod.getMethod().getIR().getThis(), csCallSite);
-////                            System.out.println("hh");
-//                        }
-////                        if (invoke.getLValue()!=null && invoke.getLValue().getName().equals("$r3")){
-////                            System.out.println(stmt);
-////                            System.out.println(invoke.getMethodRef());
-////                            System.out.println(csManager.getCSVar(csMethod.getContext(), invoke.getLValue()).getPointsToSet());
-//////                            if (csManager.getCSVar(csMethod.getContext(), invoke.getLValue()).getPointsToSet() != null){
-//////                                System.out.println(csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getBase()).getPointsToSet());
-//////                            }
+//
+////                    if (stmt instanceof Invoke invoke && invoke.getRValue() instanceof InvokeInstanceExp invokeInstanceExp) {
+////                        if(invokeInstanceExp.getBase().getName().equals("$r1")){
+//////                            System.out.println(csManager.getCSVar(csMethod.getContext(), invoke.getRValue().getArg(0)).getPointsToSet());
+////                            if (csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getBase()).getPointsToSet() != null){
+//////                                System.out.println(invokeInstanceExp.getArg(0));
+//////                                System.out.println(csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getArg(0)).getPointsToSet());
+////                                System.out.println(invokeInstanceExp.getBase());
+////                                System.out.println(csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getBase()).getPointsToSet());
+////                                //System.out.println(invoke.getMethodRef().resolve());
+////                            }
+////
+//////                            CSCallSite csCallSite = csManager.getCSCallSite(csMethod.getContext(), invoke);
+//////                            findFormalParameterAssociation(invokeInstanceExp.getBase(), csMethod.getMethod(), csMethod.getMethod().getIR().getThis(), csCallSite);
+//////                            System.out.println("hh");
 ////                        }
-//                    }
-
-                });
-            }
-        });
+//////                        if (invoke.getLValue()!=null && invoke.getLValue().getName().equals("$r3")){
+//////                            System.out.println(stmt);
+//////                            System.out.println(invoke.getMethodRef());
+//////                            System.out.println(csManager.getCSVar(csMethod.getContext(), invoke.getLValue()).getPointsToSet());
+////////                            if (csManager.getCSVar(csMethod.getContext(), invoke.getLValue()).getPointsToSet() != null){
+////////                                System.out.println(csManager.getCSVar(csMethod.getContext(), invokeInstanceExp.getBase()).getPointsToSet());
+////////                            }
+//////                        }
+////                    }
+//
+//                });
+//            }
+//        });
 //                World.get().getClassHierarchy().allClasses().forEach(jClass -> {
 //            if(jClass.getName().equals("org.hibernate.engine.spi.TypedValue$1")){
 ////                JMethod jMethod = jClass.getDeclaredMethod("initTransients");
